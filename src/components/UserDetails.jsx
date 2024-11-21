@@ -1,12 +1,13 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
-const UserDetails = ({ users }) => {
+const UserDetails = () => {
+  const { users } = useContext(UserContext);
   const { id } = useParams();
   const user = users.find((user) => user.id.toString() === id);
 
-  if (!user) 
-    return <h2>User not found</h2>;
+  if (!user) return <h2>User not found</h2>;
 
   return (
     <div className="user-details">
@@ -18,8 +19,8 @@ const UserDetails = ({ users }) => {
       <p><strong>Phone: </strong>{user.phone}</p>
       <p><strong>Website: </strong>{user.website}</p>
       <p><strong>Company: </strong>{user.company.name}</p>
-      </div>
-  )
-}
+    </div>
+  );
+};
 
 export default UserDetails;
