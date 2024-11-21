@@ -40,7 +40,7 @@ function App() {
               <div>
                 <SearchBar onSearch={handleSearch} />
                 <div className="card-container">
-                {users.map((user) => (
+                {filteredUsers.map((user) => (
                   <UserCard key={user.id} user={user} onDelete={deleteUser} />
                 ))}
               </div>
